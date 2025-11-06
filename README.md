@@ -102,7 +102,7 @@ Incluye diseño conceptual, construcción física, inserción de datos y documen
 
 #  Proyecto Base de Datos – Colegio (MYSQL + Docker)
 
-## Autor primera parte Maikoll Daniel Torres Fandiño
+## Autor segunda parte Maikoll Daniel Torres Fandiño
 
 El ejercicio se basa en una base de datos de una bilioteca en la que se encuentras las tablas Categoria, Autor, Libro, LibroAutor, Usuario y Prestamo.
 El **diagrama entidad-relación (E-R)** refleja las relaciones entre estas entidades principales:
@@ -116,7 +116,7 @@ El **diagrama entidad-relación (E-R)** refleja las relaciones entre estas entid
 ---
 
 ### Imagen 1– Ejecución del contenedor MySQL en Docker
- ![imagen1](1.PNG)
+ ![imagen1](1.png)
 
 Se muestra la ejecución del siguiente comando en la terminal:
 
@@ -130,7 +130,7 @@ Esto permite que HeidiSQL pueda conectarse al servicio de base de datos ejecutá
 
 ---
 ###  Imagen 2 – Configuración de conexión en HeidiSQL
-![imagen2](2.PNG)
+![imagen2](2.png)
 En esta imagen se evidencia la ventana del **Administrador de sesiones de HeidiSQL**, configurada para conectarse al servidor MySQL local:
 
 - Host: `127.0.0.1`
@@ -145,7 +145,7 @@ Se crea y guarda una sesión para conectar de manera sencilla al contenedor MySQ
 ---
 
 ###  Imagen 3 – Creación de tablas `Categoria`, `Autor`, `Libro` y `LibroAutor`
-![imagen3](3.PNG)
+![imagen3](3.png)
 Aquí se observa la definición de las tablas principales de la base de datos:
 
 - `Categoria`: clasifica los libros.  
@@ -159,7 +159,7 @@ Esta estructura refleja un diseño **relacional normalizado**, donde cada entida
 ---
 
 ### Imagen 4 – Creación de tablas `Usuario` y `Prestamo`
-![imagen4](4.PNG)
+![imagen4](4.png)
 
 En esta captura se muestran las estructuras SQL de las tablas:
 
@@ -172,7 +172,7 @@ Esta parte del script garantiza la **integridad referencial** entre usuarios y p
 ---
 
 ###  Imagen 5 – Inserción de datos en la tabla `Autor`
-![imagen5](5.PNG)
+![imagen5](5.png)
 En esta imagen se observa una sentencia SQL ejecutada en HeidiSQL:
 
 ```sql
@@ -184,7 +184,7 @@ Se realiza la inserción de un nuevo registro en la tabla `Autor`, añadiendo un
 
 ---
 ###  Imagen 6 – Inserción de datos en la tabla `Autor`
-![imagen6](6.PNG)
+![imagen6](6.png)
 En esta imagen se observa el resultado de la sentencia anterior y como los datos fueron ingresados
 
 ---

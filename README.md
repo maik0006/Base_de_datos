@@ -109,7 +109,7 @@ El **diagrama entidad-relación (E-R)** refleja las relaciones entre estas entid
 
  **Evidencia:** diagrama E-R incluido en el archivo
 
- ![E-R](7.PNG)
+ ![E-R](7.png)
  Este proyecto muestra la creación, conexión y manipulación de una base de datos llamada **biblioteca** utilizando **MySQL** dentro de un contenedor **Docker**, gestionada mediante la herramienta **HeidiSQL**.
 
 

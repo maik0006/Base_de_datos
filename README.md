@@ -90,9 +90,111 @@ INSERT INTO estudiante (nombre, fecha_nacimiento, acudiente_id) VALUES
 - `powershell.png` → Ejecución de comandos y carga del script.  
 - `diagrama entidad relacion 1.png` → Diagrama E-R de la base de datos.
 
+
 ---
 
 ##  6. Conclusión
 
 Este proyecto demuestra el proceso completo de diseño e implementación de una base de datos relacional en PostgreSQL usando Docker.  
 Incluye diseño conceptual, construcción física, inserción de datos y documentación técnica.
+
+---
+
+#  Proyecto Base de Datos – Colegio (MYSQL + Docker)
+
+## Autor primera parte Maikoll Daniel Torres Fandiño
+
+El ejercicio se basa en una base de datos de una bilioteca en la que se encuentras las tablas Categoria, Autor, Libro, LibroAutor, Usuario y Prestamo.
+El **diagrama entidad-relación (E-R)** refleja las relaciones entre estas entidades principales:
+
+ **Evidencia:** diagrama E-R incluido en el archivo
+
+ ![E-R](7.PNG)
+ Este proyecto muestra la creación, conexión y manipulación de una base de datos llamada **biblioteca** utilizando **MySQL** dentro de un contenedor **Docker**, gestionada mediante la herramienta **HeidiSQL**.
+
+
+---
+
+### Imagen 1– Ejecución del contenedor MySQL en Docker
+ ![imagen1](1.PNG)
+
+Se muestra la ejecución del siguiente comando en la terminal:
+
+```bash
+docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=biblioteca -e MYSQL_USER=bibliotecario -e MYSQL_PASSWORD=1234 -p 3306:3306 mysql:latest
+```
+
+**Descripción:**  
+Aquí se levanta un contenedor con la imagen oficial de **MySQL**, exponiendo el puerto 3306 y creando automáticamente la base de datos `biblioteca` junto con el usuario `bibliotecario`.  
+Esto permite que HeidiSQL pueda conectarse al servicio de base de datos ejecutándose en Docker.
+
+---
+###  Imagen 2 – Configuración de conexión en HeidiSQL
+![imagen2](2.PNG)
+En esta imagen se evidencia la ventana del **Administrador de sesiones de HeidiSQL**, configurada para conectarse al servidor MySQL local:
+
+- Host: `127.0.0.1`
+- Usuario: `bibliotecario`
+- Contraseña: `1234`
+- Puerto: `3306`
+- Base de datos: `biblioteca`
+
+ **Descripción:**  
+Se crea y guarda una sesión para conectar de manera sencilla al contenedor MySQL levantado en Docker, utilizando las credenciales configuradas previamente.
+
+---
+
+###  Imagen 3 – Creación de tablas `Categoria`, `Autor`, `Libro` y `LibroAutor`
+![imagen3](3.PNG)
+Aquí se observa la definición de las tablas principales de la base de datos:
+
+- `Categoria`: clasifica los libros.  
+- `Autor`: almacena datos de los autores.  
+- `Libro`: incluye información bibliográfica y relación con la categoría.  
+- `LibroAutor`: tabla intermedia que implementa una **relación muchos a muchos** entre libros y autores.
+
+ **Descripción:**  
+Esta estructura refleja un diseño **relacional normalizado**, donde cada entidad se maneja en una tabla independiente y se vincula mediante **foreign keys** para mantener consistencia.
+
+---
+
+### Imagen 4 – Creación de tablas `Usuario` y `Prestamo`
+![imagen4](4.PNG)
+
+En esta captura se muestran las estructuras SQL de las tablas:
+
+- `Usuario`: contiene campos como `nombre`, `apellido`, `correo_electronico` (único) y un campo `tipo_usuario` con valores definidos por un **ENUM**.  
+- `Prestamo`: almacena información sobre los préstamos de libros, incluyendo fechas y estado del préstamo, con llaves foráneas que referencian a `Usuario` y `Libro`.
+
+**Descripción:**  
+Esta parte del script garantiza la **integridad referencial** entre usuarios y préstamos, además de definir las restricciones necesarias para mantener coherencia en los datos.
+
+---
+
+###  Imagen 5 – Inserción de datos en la tabla `Autor`
+![imagen5](5.PNG)
+En esta imagen se observa una sentencia SQL ejecutada en HeidiSQL:
+
+```sql
+INSERT INTO Autor(nombre, nacionalidad)
+VALUES ("Mario Mendoza", "Colombiano");
+```
+ **Descripción:**  
+Se realiza la inserción de un nuevo registro en la tabla `Autor`, añadiendo un autor con su respectiva nacionalidad. Esto demuestra que la base de datos y las tablas están creadas correctamente y permiten operaciones **INSERT**.
+
+---
+###  Imagen 6 – Inserción de datos en la tabla `Autor`
+![imagen6](6.PNG)
+En esta imagen se observa el resultado de la sentencia anterior y como los datos fueron ingresados
+
+---
+##  Tecnologías utilizadas
+
+- **Docker** – para la gestión del contenedor de MySQL.  
+- **MySQL**  – como sistema de gestión de bases de datos relacional.  
+- **HeidiSQL**– como cliente gráfico para crear y consultar la base de datos. 
+
+
+
+
+
